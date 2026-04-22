@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Prijava - Projekt</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .prozor {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid gray;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .plavo-dugme {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+        }
+        .zeleno-dugme {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="prozor">
+        <h2>Prijavi se</h2>
+        
+        <input type="email" id="email" placeholder="Unesi email">
+        <input type="password" id="lozinka" placeholder="Unesi lozinku">
+        
+        <button class="plavo-dugme" onclick="prijaviMe()">Login</button>
+        <button class="zeleno-dugme" onclick="registrujMe()">Registracija</button>
+        
+        <p id="poruka" style="color: red;"></p>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="firebase.js"></script>
+
+    <script>
+        function prijaviMe() {
+            var email = document.getElementById("email").value;
+            var pass = document.getElementById("lozinka").value;
+
+            firebase.auth().signInWithEmailAndPassword(email, pass)
+                .then(function() {
+                    window.location = "index.html";
+                })
+                .catch(function(error) {
+                    document.getElementById("poruka").innerText = "Greška: " + error.message;
+                });
+        }
+
+        function registrujMe() {
+            var email = document.getElementById("email").value;
+            var pass = document.getElementById("lozinka").value;
+
+            firebase.auth().createUserWithEmailAndPassword(email, pass)
+                .then(function() {
+                    alert("Uspješno napravljen profil!");
+                })
+                .catch(function(error) {
+                    document.getElementById("poruka").innerText = "Greška: " + error.message;
+                });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Moja Stranica - Rezervacije</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="glavni-kontejner">
+        <h2>Napravi rezervaciju</h2>
+        
+        <label>Datum:</label>
+        <input type="date" id="datum">
+        
+        <label>Vrijeme:</label>
+        <input type="time" id="vrijeme">
+        
+        <button onclick="dodaj()">Dodaj u bazu</button>
+        
+        <hr>
+        
+        <h3>Sve rezervacije:</h3>
+        <ul id="lista"></ul>
+        
+        <button class="odjava" onclick="odjaviSe()">Odjavi se</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="firebase.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
