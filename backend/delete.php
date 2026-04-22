@@ -1,0 +1,9 @@
+<?php
+include "db.php";
+
+$id = $_POST['id'];
+
+$sql = "DELETE FROM reservations WHERE id=$id";
+
+$conn->query($sql);
+?>
